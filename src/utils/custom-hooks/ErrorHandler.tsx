@@ -12,3 +12,5 @@ const userErrorHandler = (initialState: string | null) => {
 };
 
 const { error, showError } = useErrorHandler(null);
+
+export default userErrorHandler;

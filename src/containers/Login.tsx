@@ -9,7 +9,8 @@ function Login() {
   const [userEmail, setUserEmail] = React.useState("");
   const [userPassword, setUserPassword] = React.useState("");
   const [loading, setLoading] = React.useState(false);
-  const { error, showError } = useErrorHandler(null);const authHandler = async () => {
+  const { error, showError } = useErrorHandler(null);
+  const authHandler = async () => {
     try {
       setLoading(true);
       const userData = await apiRequest(
