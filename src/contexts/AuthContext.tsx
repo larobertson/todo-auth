@@ -18,7 +18,8 @@ export const authContext = React.createContext<IAuthContextInterface>({
   setUnauthStatus: () => {}
 });
 
-const { Provider } = authContext;const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
+const { Provider } = authContext;
+const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children
 }) => {
   const { auth, setAuthStatus, setUnauthStatus } = useAuthHandler(

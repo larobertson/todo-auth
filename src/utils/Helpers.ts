@@ -10,6 +10,8 @@ import * as validator from "validator";/** Handle form validation for the login 
 * @param password - user's auth password
 * @param setError - function that handles updating error state value
 */
+import { UserAuth } from "../custom-types";/** Utils */
+import { DEFAULT_USER_AUTH } from "./Consts";
 
 export const apiRequest = async (
   url: string,
@@ -44,7 +46,7 @@ export const validateLoginForm = (
   }return true;
 };
 
-/** Return user auth from local storage value */
+// /** Return user auth from local storage value */
 export const getStoredUserAuth = (): UserAuth => {
   const auth = window.localStorage.getItem("UserAuth");
   if (auth) {
