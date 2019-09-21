@@ -1,4 +1,5 @@
-import * as React from "react";/** Presentation/UI */
+import * as React from "react";
+/** Presentation/UI */
 import { JokeContainer } from "../components/Styles";
 /** Utils */
 import { apiRequest } from "../utils/Helpers";
@@ -6,8 +7,7 @@ import { apiRequest } from "../utils/Helpers";
 const RandomJoke: React.FC<{}> = () => {
   const [joke, setJoke] = React.useState("");
   const [loading, setLoading] = React.useState(false);
-  
-  React.useEffect(() => {
+React.useEffect(() => {
     const getRandomJoke = async () => {
       setLoading(true);
       const joke = await apiRequest(
@@ -19,12 +19,10 @@ const RandomJoke: React.FC<{}> = () => {
     };
     getRandomJoke();
   }, []);
-  
-  return (
+return (
     <JokeContainer>
       {loading ? "Why so serious, let's put a smile on your face :)" : joke}
     </JokeContainer>
   );
 };
-
 export default RandomJoke;

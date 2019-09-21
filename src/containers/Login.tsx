@@ -1,18 +1,21 @@
 import * as React from "react";
-import { Button, Form, FormGroup, Input } from "reactstrap";/** Presentation */
-import ErrorMessage from "../components/ErrorMessage";/** Custom Hooks */
-import useErrorHandler from "../utils/custom-hooks/ErrorHandler";/** Context */
-import { authContext } from "../contexts/AuthContext";/** Utils */
+import { Button, Form, FormGroup, Input } from "reactstrap";
+/** Presentation */
+import ErrorMessage from "../components/ErrorMessage";
+/** Custom Hooks */
+import useErrorHandler from "../utils/custom-hooks/ErrorHandler";
+/** Context */
+import { authContext } from "../contexts/AuthContext";
+/** Utils */
 import { apiRequest, validateLoginForm } from "../utils/Helpers";
 import { Header } from "../components/Styles";
-
 function Login() {
   const [userEmail, setUserEmail] = React.useState("");
   const [userPassword, setUserPassword] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const auth = React.useContext(authContext);
   const { error, showError } = useErrorHandler(null);
-  const authHandler = async () => {
+const authHandler = async () => {
     try {
       setLoading(true);
       const userData = await apiRequest(
@@ -27,7 +30,7 @@ function Login() {
       showError(err.message);
     }
   };
-  return (
+return (
     <Form
       onSubmit={e => {
         e.preventDefault();
