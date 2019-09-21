@@ -8,6 +8,7 @@ import useErrorHandler from "../utils/custom-hooks/ErrorHandler";
 const AddToDo: React.FC<{}> = () => {
   const { error, showError } = useErrorHandler(null);
   const textInput = React.useRef<HTMLInputElement>(null);
+
   const addNewToDoItem = () => {
     if (textInput.current) {
       const toDo = textInput.current.value;
@@ -16,6 +17,7 @@ const AddToDo: React.FC<{}> = () => {
       showError("Please type an item before clicking add.");
     }
   };
+  
   return (
     <Form
       onSubmit={e => {
