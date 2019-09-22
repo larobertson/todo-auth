@@ -1,9 +1,11 @@
 import * as React from "react";
 /** Custom types */
 import { ActionType } from "../custom-types";
+
 interface IState {
   toDoList: Array<{ id: string; toDo?: string; complete?: boolean }>;
 }
+
 interface IAction {
   type: ActionType;
   payload: {
@@ -12,12 +14,14 @@ interface IAction {
     complete?: boolean;
   };
 }
+
 interface ItoDoContextInterface {
   state: {
     toDoList: Array<{ id: string; toDo?: string; complete?: boolean }>;
   };
   updateToDoList: React.Dispatch<IAction>;
 }
+
 const initialState: IState = { toDoList: [] };
 const reducer: React.Reducer<IState, IAction> = (state, action) => {
   switch (action.type) {
@@ -42,12 +46,14 @@ const reducer: React.Reducer<IState, IAction> = (state, action) => {
       throw new Error();
   }
 };
+
 export const toDoContext = React.createContext<ItoDoContextInterface>({
   state: {
     toDoList: []
   },
   updateToDoList: () => {}
 });
+
 const { Provider } = toDoContext;
 const ToDoProvider: React.FC<{ children: React.ReactNode }> = ({
   children

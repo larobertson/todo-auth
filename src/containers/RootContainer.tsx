@@ -1,14 +1,18 @@
 import * as React from "react";
+/** Context */
+import { authContext } from "../contexts/AuthContext";
 /** Presentation */
 import { Wrapper } from "../components/Styles";
 import Login from "./Login";
+import ToDo from "./ToDo";
 
-function RootContainer(){
+function RootContainer() {
+  const { auth } = React.useContext(authContext);
   return (
     <Wrapper>
-      <Login />
+      {auth.id ? <ToDo /> : null}
+      {!auth.id && <Login />}
     </Wrapper>
   );
-};
-
+}
 export default RootContainer;

@@ -1,24 +1,31 @@
 import * as React from "react";
-import { Button, Form } from "reactstrap";/** Presentation */
+import { Button, Form } from "reactstrap";
+import uuid from "uuid";
+/** Context */
+import { toDoContext } from "../contexts/ToDoContext";
+/** Presentation */
 import ErrorMessage from "../components/ErrorMessage";
 import { Input } from "../components/Styles";
 /** Custom Hooks */
 import useErrorHandler from "../utils/custom-hooks/ErrorHandler";
+/** Utils */
+import { ActionType } from "../custom-types";
 
 const AddToDo: React.FC<{}> = () => {
+  const { updateToDoList } = React.useContext(toDoContext);
   const { error, showError } = useErrorHandler(null);
   const textInput = React.useRef<HTMLInputElement>(null);
-
-  const addNewToDoItem = () => {
+  
+const addNewToDoItem = () => {
     if (textInput.current) {
       const toDo = textInput.current.value;
-      console.log('Today I want to:', toDo);
+      updateToDoList({ type: ActionType.add, payload: { id: uuid(), toDo } });
+      textInput.current.value = "";
     } else {
       showError("Please type an item before clicking add.");
     }
   };
-  
-  return (
+return (
     <Form
       onSubmit={e => {
         e.preventDefault();
@@ -34,5 +41,4 @@ const AddToDo: React.FC<{}> = () => {
     </Form>
   );
 };
-
 export default AddToDo;
